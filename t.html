@@ -1,0 +1,215 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="keywords" content="乐视|爱奇艺|优酷|搜狐|腾讯|芒果|...|VIP电影免费看">
+    <meta name="description" content="乐视|爱奇艺|优酷|搜狐|腾讯|芒果|...|VIP电影免费看">
+    <meta name="author" content="iwenli,admin@iwenli.org">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="Expires" content="-1">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="apple-touch-icon" sizes="180x180" href="http://iwenli.org/static/common/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="http://iwenli.org/static/common/favicons/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="http://iwenli.org/static/common/favicons/favicon-16x16.png" sizes="16x16">
+    <link rel="manifest" href="http://iwenli.org/static/common/favicons/manifest.json">
+    <link rel="mask-icon" href="http://iwenli.org/static/common/favicons/safari-pinned-tab.svg" color="#5bbad5">
+    <title>乐视|爱奇艺|优酷|搜狐|腾讯|芒果|...|VIP电影免费看</title>
+    <link rel="stylesheet" href="http://iwenli.org/static/common/css/default.css">
+    <link rel="stylesheet" href="http://iwenli.org/static/common/css/base.css">
+    <link rel="stylesheet" href="static/common/css/style.css">
+    <!-- weui head 中 -->
+    <link rel="stylesheet" href="//cdn.bootcss.com/weui/1.1.1/style/weui.min.css">
+    <link rel="stylesheet" href="//cdn.bootcss.com/jquery-weui/1.0.1/css/jquery-weui.min.css">
+    <!--light7-->
+    <link rel="stylesheet" href="//cdn.bootcss.com/light7/0.4.3/css/light7.min.css">
+
+    <script type="text/javascript" src="http://lib.sinaapp.com/js/jquery/1.12.4/jquery-1.12.4.min.js"></script>
+    <script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+
+    <style>
+        #play-page {
+            width: 100%;
+            height: 100%;
+            background-color: #2a3746;
+            color: #fff;
+            position: absolute;
+            background-size: cover;
+            background-image: url(http://iwenli.org/static/common/img/back.jpg);
+            background-position: top center;
+        }
+
+        .item-content {
+            padding-left: 0 !important;
+        }
+
+        .j-swap {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+        <nav class="bar bar-tab">
+            <a class="tab-item active" href="#">
+                <span class="icon icon-home"></span>
+                <span class="tab-label">播放</span>
+            </a>
+            <a class="tab-item open-panel" href="#">
+                <span class="icon icon-settings"></span>
+                <span class="tab-label">设置</span>
+            </a>
+        </nav>
+        <div class="content" id="play-page">
+            <div class="content-block">
+                <div class="j-declare">
+                    <h1>声明</h1>
+                    
+                    本网站所有资源兼来自于网络，如有侵权请联系站长删除。
+                    本网站图片，文字之类版权申明，因为网站可以由注册用户自行上传图片或文字，本网站无法鉴别所上传图片或文字的知识版权，如果侵犯，请及时通知我们，本网站将在第一时间及时删除。
+
+                    凡以任何方式登陆本网站或直接、间接使用本网站资料者，视为自愿接受本网站声明的约束。
+                </div>
+                <div class="j-swap">
+                    <iframe src="" style="width: 110%;min-height: 480px;margin-left: -5%;"
+                            frameborder="0" scrolling="no" id="palyFarme"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel-overlay"></div>
+    <div class="panel panel-left panel-reveal">
+        <div class="content-block">
+            <p>设置</p>
+            <div class="list-block" style="margin:0;">
+                <ul style="background-color: #111;border: 0;">
+                    <li>
+                        <div class="item-content">
+                            <div class="item-media"><i class="icon icon-form-toggle"></i></div>
+                            <div class="item-inner" style="border-bottom:0;">
+                                <div class="item-title label" style="width: 50%;">开启加速</div>
+                                <div class="item-input">
+                                    <label class="label-switch fr">
+                                        <input type="checkbox">
+                                        <div class="checkbox"></div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <p>请输入您要观看的原URL</p>
+                    </li>
+                    <li class="align-top">
+                        <div class="item-content" style="background: #fff;">
+                            <div class="item-inner" style=" padding-right: 0;">
+                                <div class="item-input">
+                                    <textarea class="form-control"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="content-block">
+                <p><a href="#" class="button button-round" onclick="paly();">播 放</a></p>
+            </div>
+
+            <div class="weui-footer weui-footer_fixed-bottom">
+                <p class="weui-footer__links">
+                    <a href="javascript:void(0);" class="weui-footer__link">免责申明</a>
+                </p>
+                <p class="weui-footer__text">Copyright © 20017 weui.io</p>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        var ip = returnCitySN["cip"] + ',' + returnCitySN["cname"] + "local-host" + navigator.userAgent;
+        function paly() {
+            $.closePanel();
+
+            var str = $(".form-control").val();
+            if (str == null || str == '') {
+                $.alert("网址不能为空.", "吵吵提示");
+                return false;
+            }
+            if (str.Length < 10) {
+                $.alert("网址错误,请重新输入.", "吵吵提示");
+                return false;
+            }
+            index = str.indexOf('?')
+            if (index > 0) {
+                str = str.substring(0, index)
+            }
+            $.showPreloader();
+            $.ajax({
+                type: "GET",
+                url: "http://iwenli.org/vip.aspx",
+                data: { _: str, msg: ip },
+                dataType: "text",
+                error: function (XMLHttpRequest, textStatus, errorThrown) {
+                    $.toast('服务器错误.');
+                    $.hidePreloader();
+                },
+                success: function (data) {
+                    palyFarme.src = UrlDecode(data);
+                    $.hidePreloader();
+                    $('.j-declare').hide();
+                    $('.j-swap').show();
+                }
+            });
+
+        };
+        function UrlDecode(str) {
+            var ret = "";
+            for (var i = 0; i < str.length; i++) {
+                var chr = str.charAt(i);
+                if (chr == "+") {
+                    ret += " ";
+                } else if (chr == "%") {
+                    var asc = str.substring(i + 1, i + 3);
+                    if (parseInt("0x" + asc) > 0x7f) {
+                        ret += asc2str(parseInt("0x" + asc + str.substring(i + 4, i + 6)));
+                        i += 5;
+                    } else {
+                        ret += asc2str(parseInt("0x" + asc));
+                        i += 2;
+                    }
+                } else {
+                    ret += chr;
+                }
+            }
+            return ret;
+        }
+        function str2asc(strstr) {
+            return ("0" + strstr.charCodeAt(0).toString(16)).slice(-2);
+        }
+        function asc2str(ascasc) {
+            return String.fromCharCode(ascasc);
+        }
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/light7/0.4.3/js/light7.min.js"></script>
+    <!--如果你用到了拓展包中的组件，还需要引用对应的JS文件-->
+    <link rel="stylesheet" href="//cdn.bootcss.com/light7/0.4.3/css/light7-swiper.min.css">
+    <script type="text/javascript" src="//cdn.bootcss.com/light7/0.4.3/js/light7-swiper.min.js"></script>
+
+
+    <!--weui body 最后 -->
+    <script src="//cdn.bootcss.com/jquery-weui/1.0.1/js/jquery-weui.min.js"></script>
+    <!-- 如果使用了某些拓展插件还需要额外的JS -->
+    <script src="//cdn.bootcss.com/jquery-weui/1.0.1/js/swiper.min.js"></script>
+    <script src="//cdn.bootcss.com/jquery-weui/1.0.1/js/city-picker.min.js"></script>
+</body>
+
+</html>
