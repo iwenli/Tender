@@ -37,62 +37,104 @@
 </head>
 
 <body>
-  <!-- body 顶部加上如下代码 -->
-  <div class="weui-pull-to-refresh__layer">
-    <div class='weui-pull-to-refresh__arrow'></div>
-    <div class='weui-pull-to-refresh__preloader'></div>
-    <div class="down">下拉刷新</div>
-    <div class="up">释放刷新</div>
-    <div class="refresh">正在刷新</div>
-  </div>
-  <div class="weui-tab">
-    <div class="weui-tab__bd">
-      <div id="calc" class="weui-tab__bd-item weui-tab__bd-item--active">
-        <header>
-          <h1 class="title">竞标计算器</h1>
-        </header>
-        <div class="page__bd">
-          <div class="weui-cells__title">竞标公司列表(当前共：<span class="j-count">0</span> 个公司)</div>
-          <div class="weui-cells j-item-container">
-            <div class="weui-cell cell-head">
-              <div class="weui-cell__bd">
-                <p>公司名称</p>
+  <div id="mainPage">
+    <!-- body 顶部加上如下代码 -->
+    <div class="weui-pull-to-refresh__layer">
+      <div class='weui-pull-to-refresh__arrow'></div>
+      <div class='weui-pull-to-refresh__preloader'></div>
+      <div class="down">下拉刷新</div>
+      <div class="up">释放刷新</div>
+      <div class="refresh">正在刷新</div>
+    </div>
+    <div class="weui-tab">
+      <div class="weui-tab__bd">
+        <div id="calc" class="weui-tab__bd-item weui-tab__bd-item--active">
+          <header>
+            <h1 class="title">竞标计算器</h1>
+          </header>
+          <div class="page__bd">
+            <div class="weui-cells__title">竞标公司列表(当前共：<span class="j-count">0</span> 个公司)</div>
+            <div class="weui-cells j-item-container">
+              <div class="weui-cell cell-head">
+                <div class="weui-cell__bd">
+                  <p>公司名称</p>
+                </div>
+                <div class="weui-cell__ft">竞价金额(单位：万元)</div>
               </div>
-              <div class="weui-cell__ft">竞价金额(单位：万元)</div>
+            </div>
+            <div class="btn-container">
+              <a href="javascript:;" class=" weui-btn weui-btn_plain-primary j-open">添加公司</a>
+              <a href="javascript:;" class="weui-btn weui-btn_disabled weui-btn_primary j-calc">计算得分</a>
             </div>
           </div>
-          <div class="btn-container">
-            <a href="javascript:;" class=" weui-btn weui-btn_plain-primary j-open">添加公司</a>
-            <a href="javascript:;" class="weui-btn weui-btn_disabled weui-btn_primary j-calc">计算得分</a>
+        </div>
+        <div id="record" class="weui-tab__bd-item">
+          <header>
+            <h1 class="title">历史记录</h1>
+          </header>
+          <div class="weui-loadmore weui-loadmore_line">
+            <span class="weui-loadmore__tips">暂无数据</span>
+          </div>
+        </div>
+        <div id="setting" class="weui-tab__bd-item">
+          <header>
+            <h1 class="title">服务器设置</h1>
+          </header>
+          <div class="weui-cells__title">开关</div>
+          <div class="weui-cells weui-cells_form">
+            <div class="weui-cell weui-cell_switch">
+              <div class="weui-cell__bd">是否启用加速计算</div>
+              <div class="weui-cell__ft">
+                <input class="weui-switch" type="checkbox" checked="checked">
+              </div>
+            </div>
+            <div class="weui-cell weui-cell_switch">
+              <div class="weui-cell__bd">是否启用加密传输</div>
+              <div class="weui-cell__ft">
+                <label for="switchCP" class="weui-switch-cp">
+                    <input id="switchCP" class="weui-switch-cp__input" type="checkbox" checked="checked">
+                    <div class="weui-switch-cp__box"></div>
+                  </label>
+              </div>
+            </div>
+          </div>
+          <div class="weui-cells__title">系统设置</div>
+          <div class="weui-cells">
+            <div class="weui-cell weui-cell_select weui-cell_select-after">
+              <div class="weui-cell__hd">
+                <label for="" class="weui-label">金额单位</label>
+              </div>
+              <div class="weui-cell__bd">
+                <select class="weui-select" name="select2">
+                        <option value="1">元</option>
+                        <option selected value="2">万元</option>
+                        <option value="3">千万</option>
+                      </select>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-      <div id="tab2" class="weui-tab__bd-item">
-        <h1>页面二</h1>
+      <div class="weui-tabbar">
+        <a href="#record" class="weui-tabbar__item">
+          <div class="weui-tabbar__icon">
+            <img src="http://jqweui.com/dist/demos/images/icon_nav_article.png" alt="">
+          </div>
+          <p class="weui-tabbar__label">记录</p>
+        </a>
+        <a href="#calc" class="weui-tabbar__item weui-bar__item--on">
+          <div class="weui-tabbar__icon">
+            <img src="http://jqweui.com/dist/demos/images/icon_nav_button.png" alt="">
+          </div>
+          <p class="weui-tabbar__label">计算</p>
+        </a>
+        <a href="#setting" class="weui-tabbar__item">
+          <div class="weui-tabbar__icon">
+            <img src="http://jqweui.com/dist/demos/images/icon_nav_cell.png" alt="">
+          </div>
+          <p class="weui-tabbar__label">设置</p>
+        </a>
       </div>
-      <div id="tab3" class="weui-tab__bd-item">
-        <h1>页面三</h1>
-      </div>
-    </div>
-    <div class="weui-tabbar">
-      <a href="#" class="weui-tabbar__item">
-        <div class="weui-tabbar__icon">
-          <img src="http://jqweui.com/dist/demos/images/icon_nav_article.png" alt="">
-        </div>
-        <p class="weui-tabbar__label">记录</p>
-      </a>
-      <a href="#calc" class="weui-tabbar__item weui-bar__item--on">
-        <div class="weui-tabbar__icon">
-          <img src="http://jqweui.com/dist/demos/images/icon_nav_button.png" alt="">
-        </div>
-        <p class="weui-tabbar__label">计算</p>
-      </a>
-      <a href="#" class="weui-tabbar__item">
-        <div class="weui-tabbar__icon">
-          <img src="http://jqweui.com/dist/demos/images/icon_nav_cell.png" alt="">
-        </div>
-        <p class="weui-tabbar__label">设置</p>
-      </a>
     </div>
   </div>
   <!-- 编辑公司pop -->
@@ -123,7 +165,7 @@
       </div>
     </div>
   </div>
-  <!-- 计算结果弹窗 -->
+  <!-- 计算结果弹窗  weui-popup__container--visible style="display: block;" -->
   <div id="resultPage" class="weui-popup__container">
     <div class="weui-popup__overlay"></div>
     <div class="weui-popup__modal">
@@ -153,6 +195,7 @@
         <!-- // second table -->
       </div>
       <div class="btn-container">
+        <a href="javascript:;" class="weui-btn weui-btn_default j-result-save">保存</a>
         <a href="javascript:;" class="weui-btn weui-btn_primary close-popup j-result-close">关闭</a>
       </div>
     </div>

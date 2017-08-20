@@ -3,8 +3,8 @@ var CompanyObjList = []//待计算公司对象
 
 $(function () {
     //下拉刷新
-    $(document.body).pullToRefresh();
-    $(document.body).on("pull-to-refresh", function () {
+    $('#mainPage').pullToRefresh();
+    $('#mainPage').on('pull-to-refresh', function () {
         setTimeout(function () { location.reload(); }, 1000);
     });
     //长按编辑
@@ -62,7 +62,7 @@ function openPopup(id) {
     }
     $('.j-add').attr('data-id', index);
     $('.j-popupTitle').text(title);
-    $("#edit").popup();
+    $('#edit').popup();
 }
 
 //绑定公司长按编辑事件
@@ -124,7 +124,7 @@ $('.j-calc').on('click', function () {
         5000 //超时时间，考虑到网络问题，5秒还是比较合理的  
     );
     setTimeout(function () {
-        $.post("/api/open.axd", { data: JSON.stringify(CompanyObjList) }, function (data) {
+        $.post('/api/open.axd', { data: JSON.stringify(CompanyObjList) }, function (data) {
             if (timeout) { //清除定时器  
                 clearTimeout(timeout);
                 timeout = null;
@@ -134,10 +134,25 @@ $('.j-calc').on('click', function () {
             if (obj.errcode == 0) {
                 $('.j-result-item').empty().append(template('t-result-item', { list: obj.data }));
                 $('#resultPage header span').text(parseInt(Math.random()*100));
-                $("#resultPage").popup();
+                $('#resultPage').popup();
             } else {
                 $.toast(obj.errmsg, 'forbidden');
             }
         });
     }, 1000);
+});
+
+$('.j-result-save').on('click',function(){
+    $.alert('暂不支持保存', '保存');
+    // $.prompt({
+    //     text: '项目名称为必输项，用来在历史记录里面做检索',
+    //     title: '保存投标计算结果',
+    //     onOK: function(text) {
+    //       $.alert('暂不支持保存', '保存');
+    //     },
+    //     onCancel: function() {
+    //         $.toast('取消保存!', 'cancel');
+    //     },
+    //     input: '请输入项目名称'
+    //   });
 });

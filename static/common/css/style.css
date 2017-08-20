@@ -35,9 +35,9 @@ header .second-title {
 
 .weui-tab__bd {
     height: 92%;
-    height: -moz-calc(100% - 53px);  
-    height: -webkit-calc(100% - 53px);     
-    height: calc(100% - 53px); 
+    height: -moz-calc(100% - 53px);
+    height: -webkit-calc(100% - 53px);
+    height: calc(100% - 53px);
 }
 
 .cell-head {
@@ -66,6 +66,10 @@ header .second-title {
 
 #resultPage .weui-popup__modal {
     background: #FFF;
+}
+
+#mainPage {
+    height: 100%;
 }
 
 
@@ -137,4 +141,29 @@ table thead {
     border-radius: 8px;
     border: 3px solid #fff;
     background-color: rgba(0, 0, 0, .3);
+}
+
+
+/* 设置页面 */
+
+#setting {
+    background: #111;
+    color: white;
+    width: 80%;
+    margin-left: 20%;
+}
+
+#setting .title {
+    color: #a2a2a2;
+    font-size: 28px;
+}
+
+#setting .weui-cells {
+    background: #232323;
+}
+
+#setting .weui-select {
+    margin-left: 50%;
+    color: #aaa;
+    line-height: 49px;
 }
